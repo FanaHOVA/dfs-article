@@ -12,7 +12,7 @@ module CsvAnalysis
 
   def self.format_for_database
     players = []
-    CSV.foreach("./data.csv") do |row|
+    CSV.foreach("./data.csv", headers: false) do |row|
       players << {
         position: row[0],
         name: row[1],

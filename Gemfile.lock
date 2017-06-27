@@ -6,6 +6,7 @@ GEM
     jwt (1.5.6)
     libxml-ruby (3.0.0)
     multipart-post (2.0.0)
+    rmagick (2.16.0)
     sequel (4.47.0)
     twilio-ruby (5.0.0.rc24)
       faraday (~> 0.9)
@@ -16,6 +17,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  rmagick
   sequel
   twilio-ruby (~> 5.0.0.rc21)
 
