@@ -1,0 +1,23 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    faraday (0.12.1)
+      multipart-post (>= 1.2, < 3)
+    jwt (1.5.6)
+    libxml-ruby (3.0.0)
+    multipart-post (2.0.0)
+    sequel (4.47.0)
+    twilio-ruby (5.0.0.rc24)
+      faraday (~> 0.9)
+      jwt (~> 1.5)
+      libxml-ruby (= 3.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  sequel
+  twilio-ruby (~> 5.0.0.rc21)
+
+BUNDLED WITH
+   1.15.1
