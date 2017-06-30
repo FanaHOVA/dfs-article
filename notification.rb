@@ -10,7 +10,7 @@ module Notification
   IMAGE_PATH = './updates.png'.freeze
 
   def self.mms(players)
-    players.map! { |player| "#{player[:name]} (#{player[:team]}) now costs #{player[:salary]}" }
+    players.map! { |player| "#{player[:name]} (#{player[:team]}) now costs $#{player[:salary]}" }
     generate_image(players)
 
     client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
