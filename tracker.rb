@@ -17,15 +17,11 @@ module Tracker
       existing_player = DB[:players].where(name: player[:name], team: player[:team]).first
 
       if existing_player
-        #next unless existing_player[:salary].to_i != player[:salary].to_i
+        next unless existing_player[:salary].to_i != player[:salary].to_i
         price_changes << existing_player
       else
         players_table.insert(player)
       end
-    end
-
-    DB[:players].where(team: 'WAS').each do |pl|
-      price_changes << pl
     end
 
     Notification.mms(price_changes) unless price_changes.empty?
