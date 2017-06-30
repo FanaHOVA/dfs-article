@@ -2,17 +2,18 @@ require 'RMagick'
 
 module Notification
   def self.mms(player)
-    generate_image(player)
+    info = "#{player[:name]} (#{player[:team]}) now costs #{player[:salary]}"
+    generate_image(info)
 
   end
 
-  def self.generate_image(player)
+  def self.generate_image(info)
     canvas = Magick::Image.new(480, 700) {self.background_color = 'yellow'}
     gc = Magick::Draw.new
-    gc.pointsize(15)
-    gc.text(10,70, player[:name].center(11))
-    gc.text(10,120, player[:team].center(11))
-    gc.text(10,150, player[:salary].center(11))
+    gc.pointsize(20)
+    title = 'New DFS updates:'
+    gc.text(10, 30, title.center(11))
+    gc.text(10, 60, info.center(11))
 
     gc.draw(canvas)
     canvas.write('./image.png')
