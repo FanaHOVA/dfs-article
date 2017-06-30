@@ -1,6 +1,10 @@
 require 'RMagick'
 require 'dotenv/load'
 require 'twilio-ruby'
+require 'imgur'
+
+ACCOUNT_SID = ENV['TWILIO_SID'].freeze
+AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN'].freeze
 
 module Notification
   IMAGE_PATH = './updates.png'.freeze
@@ -9,10 +13,10 @@ module Notification
     players.map! { |player| "#{player[:name]} (#{player[:team]}) now costs #{player[:salary]}" }
     generate_image(players)
 
-    client = Twilio::REST::Client.new
+    client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
     client.messages.create(
-      from: '+14159341234',
-      to: '+16105557069',
+      from: '+13858316089',
+      to: '+393669785418',
       body: 'Your DFS price updates are in!',
       media_url: upload_image
     )
@@ -35,6 +39,7 @@ module Notification
     client = Imgur.new(ENV['IMGUR_CLIENT_KEY'])
     image = Imgur::LocalImage.new(IMAGE_PATH, title: 'My DFS update')
     up = client.upload(image)
+    puts up.link
     up.link
   end
 end
