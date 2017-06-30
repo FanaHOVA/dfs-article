@@ -22,4 +22,8 @@ CsvAnalysis.format_for_database.each do |player|
   end
 end
 
-Notification.mms(price_changes)
+DB[:players].where(team: 'WAS').each do |pl|
+  price_changes << pl
+end
+
+Notification.mms(price_changes) unless price_changes.empty?
